@@ -1,3 +1,18 @@
+// Animar corazones flotando en el fondo
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+    heart.style.opacity = 0.6 + Math.random() * 0.4;
+    heart.style.transform = `scale(${0.7 + Math.random() * 0.6})`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 700);
+
+// ...existing code...
 const btnRandom = document.querySelector("#random-btn")
 
 function moverAleatoriamente(btn){
@@ -7,6 +22,8 @@ function moverAleatoriamente(btn){
     btn.style.left = Math.floor(Math.random() * 90 + 5)+ "%";
 }
 
-btnRandom.addEventListener("mouseenter", function (e){
-    moverAleatoriamente(e.target)
-})
+if(btnRandom) {
+    btnRandom.addEventListener("mouseenter", function (e){
+        moverAleatoriamente(e.target)
+    })
+}
